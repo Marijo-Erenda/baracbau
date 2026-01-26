@@ -1,0 +1,40 @@
+/* Sidebar Container */
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background-color: #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header / Logo */
+.sidebar__header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #222;
+}
+
+.sidebar__header h1 {
+  font-size: 1.1rem;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+/* Navigation */
+.sidebar__nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.sidebar__item {
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.sidebar__item:hover {
+  background-color: #1e1e1e;
+  color: #fff;
+}

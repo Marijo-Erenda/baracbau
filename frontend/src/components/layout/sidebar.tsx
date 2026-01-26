@@ -12,8 +12,8 @@ const menu: MenuItem[] = [
     label: "Leistungen",
     children: [
       { label: "Portfolio" },
-      { label: "Kompetenzen" }
-    ]
+      { label: "Kompetenzen" },
+    ],
   },
   { label: "Karriere" },
   { label: "Kontakt" },
@@ -23,33 +23,42 @@ export function Sidebar() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <nav style={{ width: 240, padding: 16, background: "#f8f9fa" }}>
-      {menu.map((item, idx) => (
-        <div key={idx}>
-          <button
-            onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-            style={{
-              width: "100%",
-              textAlign: "left",
-              padding: "8px 0",
-              border: "none",
-              background: "none",
-              fontWeight: 600
-            }}
-          >
-            {item.label}
-          </button>
-          {item.children && openIndex === idx && (
-            <div style={{ paddingLeft: 16 }}>
-              {item.children.map((child, cIdx) => (
-                <div key={cIdx} style={{ padding: "4px 0" }}>
-                  {child.label}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
+    <nav className="sidebar">
+      <div className="sidebar__header">
+        <h1>BARACBAU</h1>
+      </div>
+
+      <ul className="sidebar__menu">
+        {menu.map((item, idx) => {
+          const isOpen = openIndex === idx;
+
+          return (
+            <li key={idx} className="sidebar__menu-item">
+              <button
+                className="sidebar__button"
+                onClick={() =>
+                  setOpenIndex(isOpen ? null : idx)
+                }
+              >
+                {item.label}
+              </button>
+
+              {item.children && isOpen && (
+                <ul className="sidebar__submenu">
+                  {item.children.map((child, cIdx) => (
+                    <li
+                      key={cIdx}
+                      className="sidebar__submenu-item"
+                    >
+                      {child.label}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          );
+        })}
+      </ul>
     </nav>
   );
 }
