@@ -1,7 +1,13 @@
+/* ==================================
+   BARACBAU – Frontend / home.css
+   Home page hero styles
+   ================================== */
+
 .home {
   position: relative;
-  z-index: 1; /* <<< unter Sidebar */
+  z-index: 1; /* unter Sidebar */
   min-height: 100vh;
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -16,13 +22,12 @@
   position: absolute;
   inset: 0;
   background: rgba(47, 79, 58, 0.45);
-  pointer-events: none; /* <<< DAS FEHLTE */
+  pointer-events: none;
 }
-
 
 .home__content {
   position: absolute;
-  top: 1rem;
+  top: 4rem;     /* minimal mehr Luft */
   right: 4rem;
 
   z-index: 1;
@@ -30,15 +35,20 @@
   text-align: right;
 }
 
-
+/* (optional – aktuell nicht genutzt, aber sauber vorbereitet) */
 .home__content h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
   letter-spacing: 0.12em;
 }
 
+/* Claim / Subtitle */
+
 .home__subtitle {
-  font-size: 1.25rem;
-  margin-bottom: 3rem;
+  font-size: 1.5rem; 
+  font-weight: 400;
+  letter-spacing: 0.08em;
+
+  margin: 0;
   opacity: 0.9;
 }

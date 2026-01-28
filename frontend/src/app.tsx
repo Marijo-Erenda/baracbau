@@ -1,5 +1,5 @@
 /* ==================================
-   BARACBAU – Frontend / App.tsx
+   BARACBAU – Frontend / app.tsx
    Root application component
    ================================== */
 

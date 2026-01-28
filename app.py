@@ -14,8 +14,12 @@ def create_app():
 
 
 # ===============================
-# 🚀 App starten (Customer Backend #1)
+# 🚀 App starten (BARACBAU Backend)
 # ===============================
 if __name__ == "__main__":
+    print("🚀 BARACBAU backend starting…")
+    print("🔗 API base: http://127.0.0.1:3001/api")
+    print("❤️  Health check: http://127.0.0.1:3001/api/health")
+
     app = create_app()
     app.run(debug=True, host="127.0.0.1", port=3001)

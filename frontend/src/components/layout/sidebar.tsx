@@ -4,6 +4,7 @@
    ================================== */
 
 import { useState } from "react";
+import logo from "@/assets/images/brand_big.jpg";
 
 type MenuItem = {
   label: string;
@@ -29,6 +30,12 @@ export function Sidebar() {
 
   return (
     <nav className="sidebar">
+      {/* Logo */}
+      <div className="sidebar__logo">
+        <img src={logo} alt="BARACBAU Logo" />
+      </div>
+
+      {/* Navigation */}
       <ul className="sidebar__nav">
         {menu.map((item, idx) => {
           const isOpen = openIndex === idx;
@@ -37,9 +44,7 @@ export function Sidebar() {
             <li key={idx} className="sidebar__item">
               <button
                 className="sidebar__link"
-                onClick={() =>
-                  setOpenIndex(isOpen ? null : idx)
-                }
+                onClick={() => setOpenIndex(isOpen ? null : idx)}
               >
                 {item.label}
               </button>
@@ -47,10 +52,7 @@ export function Sidebar() {
               {item.children && isOpen && (
                 <ul className="sidebar__submenu">
                   {item.children.map((child, cIdx) => (
-                    <li
-                      key={cIdx}
-                      className="sidebar__submenu-item"
-                    >
+                    <li key={cIdx} className="sidebar__submenu-item">
                       {child.label}
                     </li>
                   ))}
