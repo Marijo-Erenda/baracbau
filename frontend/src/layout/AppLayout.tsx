@@ -1,3 +1,8 @@
+/* ==================================
+   BARACBAU – Frontend / AppLayout
+   Global application layout
+   ================================== */
+
 import { Sidebar } from "../components/layout/sidebar";
 
 type AppLayoutProps = {
@@ -6,11 +11,9 @@ type AppLayoutProps = {
 
 export function AppLayout({ children }: AppLayoutProps) {
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
+    <div className="app-layout">
       <Sidebar />
-      <main style={{ flex: 1, padding: 24 }}>
-        {children}
-      </main>
+      {children}
     </div>
   );
 }

@@ -1,3 +1,8 @@
+/* ==================================
+   BARACBAU – Frontend / sidebar.tsx
+   Primary navigation component
+   ================================== */
+
 import { useState } from "react";
 
 type MenuItem = {
@@ -24,18 +29,14 @@ export function Sidebar() {
 
   return (
     <nav className="sidebar">
-      <div className="sidebar__header">
-        <h1>BARACBAU</h1>
-      </div>
-
-      <ul className="sidebar__menu">
+      <ul className="sidebar__nav">
         {menu.map((item, idx) => {
           const isOpen = openIndex === idx;
 
           return (
-            <li key={idx} className="sidebar__menu-item">
+            <li key={idx} className="sidebar__item">
               <button
-                className="sidebar__button"
+                className="sidebar__link"
                 onClick={() =>
                   setOpenIndex(isOpen ? null : idx)
                 }

@@ -1,5 +1,6 @@
 .home {
   position: relative;
+  z-index: 1; /* <<< unter Sidebar */
   min-height: 100vh;
   background-size: cover;
   background-position: center;
@@ -14,19 +15,26 @@
 .home__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(47, 79, 58, 0.45); /* BARACBAU Grün */
+  background: rgba(47, 79, 58, 0.45);
+  pointer-events: none; /* <<< DAS FEHLTE */
 }
 
+
 .home__content {
-  position: relative;
+  position: absolute;
+  top: 1rem;
+  right: 4rem;
+
   z-index: 1;
-  max-width: 800px;
+  max-width: 600px;
+  text-align: right;
 }
+
 
 .home__content h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
 }
 
 .home__subtitle {
