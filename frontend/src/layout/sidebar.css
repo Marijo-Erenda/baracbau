@@ -3,6 +3,10 @@
    Sidebar layout & navigation styles
    ================================== */
 
+/* ================================
+   Sidebar layout
+   ================================ */
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -12,17 +16,18 @@
   height: 100vh;
   padding: 2rem 1.5rem;
 
-  background: #131413;
-  color: rgba(255, 255, 255, 0.92);
-
-  z-index: 100;
-
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+
+  background: #131413;
+  color: rgba(255, 255, 255, 0.92);
+  z-index: 100;
 }
 
-/* Logo */
+/* ================================
+   Logo
+   ================================ */
+
 .sidebar__logo {
   width: 100%;
   margin-bottom: 8rem;
@@ -34,7 +39,10 @@
   display: block;
 }
 
-/* Navigation */
+/* ================================
+   Navigation container
+   ================================ */
+
 .sidebar__nav {
   list-style: none;
   margin: 0;
@@ -50,17 +58,17 @@
   flex-direction: column;
 }
 
-/* Main link */
+/* ================================
+   Main links & toggles
+   ================================ */
+
 .sidebar__link {
   position: relative;
-  background: none;
-  border: none;
-  padding: 0;
 
-  text-align: left;
+  all: unset;
   cursor: pointer;
 
-  font-size: 1.2rem;        /* ⬅ größer */
+  font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   color: rgba(255, 255, 255, 0.8);
@@ -73,6 +81,12 @@
 .sidebar__link:hover {
   color: #ffffff;
   transform: translateX(4px);
+}
+
+/* Active state */
+.sidebar__link.is-active {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 /* Hover underline */
@@ -89,11 +103,15 @@
   transition: width 0.65s ease;
 }
 
-.sidebar__link:hover::after {
-  width: calc(100% + 100px);
+.sidebar__link:hover::after,
+.sidebar__link.is-active::after {
+  width: 232px;
 }
 
-/* Submenu */
+/* ================================
+   Submenu
+   ================================ */
+
 .sidebar__submenu {
   list-style: none;
   margin: 0.6rem 0 0.8rem 1rem;
@@ -104,18 +122,29 @@
   gap: 0.4rem;
 }
 
-.sidebar__submenu-item {
-  font-size: 1.12rem;       /* ⬅ spürbar größer */
+/* Submenu links */
+.sidebar__sublink {
+  display: inline-block;
+
+  font-size: 1.12rem;
   font-weight: 400;
-  opacity: 0.85;            /* ⬅ besserer Kontrast */
+  color: rgba(255, 255, 255, 0.78);
+
   cursor: pointer;
+  text-decoration: none;
 
   transition:
-    opacity 0.2s ease,
+    color 0.2s ease,
     transform 0.2s ease;
 }
 
-.sidebar__submenu-item:hover {
-  opacity: 1;
+.sidebar__sublink:hover {
+  color: #ffffff;
   transform: translateX(4px);
+}
+
+/* Active sublink */
+.sidebar__sublink.is-active {
+  color: #ffffff;
+  font-weight: 500;
 }

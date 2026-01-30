@@ -4,6 +4,8 @@
    ================================== */
 
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+
 import logo from "@/assets/images/brand_big.jpg";
 import "./sidebar.css";
 
@@ -17,18 +19,16 @@ type MenuItem = {
   children?: MenuItem[];
 };
 
-
 /* ================================
    Navigation structure
    ================================ */
 
-const menu: MenuItem[] = [
+const MENU: MenuItem[] = [
   {
     label: "Home",
-    path: "/",
     children: [
-      { label: "Überblick", path: "/" },
-      { label: "Warum BARACBAU", path: "/#warum" },
+      { label: "Überblick", path: "/home/ueberblick" },
+      { label: "Warum BARACBAU", path: "/home/warum" },
     ],
   },
   {
@@ -76,6 +76,32 @@ const menu: MenuItem[] = [
   },
 ];
 
+/* ================================
+   Helper Components
+   ================================ */
+
+function SidebarLink({
+  to,
+  label,
+  onClick,
+}: {
+  to: string;
+  label: string;
+  onClick: () => void;
+}) {
+  return (
+    <NavLink
+      to={to}
+      end={to === "/"}
+      className={({ isActive }) =>
+        `sidebar__sublink ${isActive ? "is-active" : ""}`
+      }
+      onClick={onClick}
+    >
+      {label}
+    </NavLink>
+  );
+}
 
 /* ================================
    Sidebar Component
@@ -84,13 +110,12 @@ const menu: MenuItem[] = [
 export function Sidebar() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const handleClick = (idx: number, hasChildren?: boolean) => {
-    if (!hasChildren) {
-      setOpenIndex(null);
-      return;
-    }
+  const toggleGroup = (index: number) => {
+    setOpenIndex(prev => (prev === index ? null : index));
+  };
 
-    setOpenIndex(openIndex === idx ? null : idx);
+  const closeMenu = () => {
+    setOpenIndex(null);
   };
 
   return (
@@ -102,26 +127,43 @@ export function Sidebar() {
 
       {/* Navigation */}
       <ul className="sidebar__nav">
-        {menu.map((item, idx) => {
-          const isOpen = openIndex === idx;
+        {MENU.map((item, index) => {
+          const hasChildren = Boolean(item.children?.length);
+          const isOpen = openIndex === index;
 
           return (
-            <li key={idx} className="sidebar__item">
-              <button
-                className="sidebar__link"
-                onClick={() => handleClick(idx, !!item.children)}
-              >
-                {item.label}
-              </button>
+            <li key={item.label} className="sidebar__item">
+              {/* Main item */}
+              {hasChildren ? (
+                <button
+                  className="sidebar__link sidebar__toggle"
+                  onClick={() => toggleGroup(index)}
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <NavLink
+                  to={item.path!}
+                  end={item.path === "/"}
+                  className={({ isActive }) =>
+                    `sidebar__link ${isActive ? "is-active" : ""}`
+                  }
+                  onClick={closeMenu}
+                >
+                  {item.label}
+                </NavLink>
+              )}
 
-              {item.children && isOpen && (
+              {/* Submenu */}
+              {hasChildren && isOpen && (
                 <ul className="sidebar__submenu">
-                  {item.children.map((child, cIdx) => (
-                    <li
-                      key={cIdx}
-                      className="sidebar__submenu-item"
-                    >
-                      {child.label}
+                  {item.children!.map(child => (
+                    <li key={child.label}>
+                      <SidebarLink
+                        to={child.path!}
+                        label={child.label}
+                        onClick={closeMenu}
+                      />
                     </li>
                   ))}
                 </ul>

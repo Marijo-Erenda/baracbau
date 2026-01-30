@@ -1,7 +1,7 @@
 /* ==================================
    BARACBAU – Frontend / Layout
    footer.css
-   Footer (Overlay / Glass Effect)
+   Footer (Viewport Overlay)
    ================================== */
 
 /* ================================
@@ -9,44 +9,26 @@
    ================================ */
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 20;
+  position: fixed;        /* 🔑 Viewport-bezogen */
+  bottom: 10px;           /* alternativ 8px oder 12px */
+  right: 0;               /* 🔑 GANZ rechts */
+  width: auto;
 
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.45),
-    rgba(0, 0, 0, 0.0)
-  );
+  z-index: 50;
+  pointer-events: auto;
 }
-
 
 /* ================================
    Inner Layout
    ================================ */
 
 .footer__inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0.75rem 2rem;
+  padding: 0.75rem 2rem 0.75rem 0;
 
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: space-between;
 }
-
-
-/* ================================
-   Text
-   ================================ */
-
-.footer__copyright {
-  color: var(--overlay-text-primary);
-  letter-spacing: 0.08em;
-}
-
 
 /* ================================
    Navigation
@@ -54,13 +36,14 @@
 
 .footer__nav {
   display: flex;
-  gap: 1.5rem;
+  gap: 2.5rem;
 }
 
-.footer__link {
-  position: relative;
-  padding: 0.35rem 0.6rem;
+/* ================================
+   Links
+   ================================ */
 
+.footer__link {
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -68,33 +51,36 @@
   color: var(--overlay-text-primary);
   text-decoration: none;
 
-  border-radius: 4px;
+  background: none;
+  border: none;
 
-  transition:
-    color 0.2s ease,
-    background-color 0.25s ease,
-    backdrop-filter 0.25s ease;
+  transition: color 0.2s ease;
+}
+
+.footer__link:first-child {
+  margin-right: 40px; /* feinjustieren vom linken footer */
 }
 
 /* ================================
-   Hover / Focus Effect
+   Hover / Focus
    ================================ */
 
-.footer__link:hover {
+.footer__link:hover,
+.footer__link:focus-visible {
   color: var(--overlay-text-hover);
-
-  background-color: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(6px);
 }
-
 
 /* ================================
    Responsive
    ================================ */
 
 @media (max-width: 768px) {
+  .footer {
+    right: 50%;
+    transform: translateX(50%);
+  }
+
   .footer__inner {
-    flex-direction: column;
-    gap: 0.5rem;
+    padding-right: 0;
   }
 }
