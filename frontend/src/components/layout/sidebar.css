@@ -1,0 +1,121 @@
+/* ==================================
+   BARACBAU – Frontend / sidebar.css
+   Sidebar layout & navigation styles
+   ================================== */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 240px;
+  height: 100vh;
+  padding: 2rem 1.5rem;
+
+  background: #131413;
+  color: rgba(255, 255, 255, 0.92);
+
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Logo */
+.sidebar__logo {
+  width: 100%;
+  margin-bottom: 8rem;
+}
+
+.sidebar__logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Navigation */
+.sidebar__nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sidebar__item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main link */
+.sidebar__link {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+
+  text-align: left;
+  cursor: pointer;
+
+  font-size: 1.2rem;        /* ⬅ größer */
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.8);
+
+  transition:
+    color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.sidebar__link:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+/* Hover underline */
+.sidebar__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+
+  width: 0;
+  height: 1px;
+  background-color: #637A5A;
+
+  transition: width 0.65s ease;
+}
+
+.sidebar__link:hover::after {
+  width: calc(100% + 120px);
+}
+
+/* Submenu */
+.sidebar__submenu {
+  list-style: none;
+  margin: 0.6rem 0 0.8rem 1rem;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.sidebar__submenu-item {
+  font-size: 1.12rem;       /* ⬅ spürbar größer */
+  font-weight: 400;
+  opacity: 0.85;            /* ⬅ besserer Kontrast */
+  cursor: pointer;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.sidebar__submenu-item:hover {
+  opacity: 1;
+  transform: translateX(4px);
+}

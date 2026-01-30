@@ -5,11 +5,20 @@
 
 import { useState } from "react";
 import logo from "@/assets/images/brand_big.jpg";
+import "./sidebar.css";
+
+/* ================================
+   Types
+   ================================ */
 
 type MenuItem = {
   label: string;
   children?: MenuItem[];
 };
+
+/* ================================
+   Navigation structure
+   ================================ */
 
 const menu: MenuItem[] = [
   { label: "Home" },
@@ -17,16 +26,31 @@ const menu: MenuItem[] = [
   {
     label: "Leistungen",
     children: [
-      { label: "Portfolio" },
-      { label: "Kompetenzen" },
+      { label: "Neubau" },
+      { label: "Komplettsanierung" },
+      { label: "Modernisierung" },
     ],
   },
+  { label: "Projekte" },
   { label: "Karriere" },
   { label: "Kontakt" },
 ];
 
+/* ================================
+   Sidebar Component
+   ================================ */
+
 export function Sidebar() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const handleClick = (idx: number, hasChildren?: boolean) => {
+    if (!hasChildren) {
+      setOpenIndex(null);
+      return;
+    }
+
+    setOpenIndex(openIndex === idx ? null : idx);
+  };
 
   return (
     <nav className="sidebar">
@@ -44,7 +68,7 @@ export function Sidebar() {
             <li key={idx} className="sidebar__item">
               <button
                 className="sidebar__link"
-                onClick={() => setOpenIndex(isOpen ? null : idx)}
+                onClick={() => handleClick(idx, !!item.children)}
               >
                 {item.label}
               </button>
@@ -52,7 +76,10 @@ export function Sidebar() {
               {item.children && isOpen && (
                 <ul className="sidebar__submenu">
                   {item.children.map((child, cIdx) => (
-                    <li key={cIdx} className="sidebar__submenu-item">
+                    <li
+                      key={cIdx}
+                      className="sidebar__submenu-item"
+                    >
                       {child.label}
                     </li>
                   ))}
