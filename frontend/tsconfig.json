@@ -1,26 +1,62 @@
+/* ==================================
+   BARACBAU – Frontend
+   tsconfig.json
+   TypeScript Compiler Configuration
+   ================================== */
+
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
+    /* ================================
+       Language & Environment
+       ================================ */
 
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "useDefineForClassFields": true,
+
+    /* ================================
+       Module System
+       ================================ */
+
+    "module": "ESNext",
     "moduleResolution": "Bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
 
-    "jsx": "react-jsx",
-    "strict": true,
+    /* ================================
+       React
+       ================================ */
 
-    /* 🔽 HINZUGEFÜGT (Node + Alias) */
+    "jsx": "react-jsx",
+
+    /* ================================
+       Type Safety
+       ================================ */
+
+    "strict": true,
+    "skipLibCheck": true,
+
+    /* ================================
+       Node / Vite Support
+       ================================ */
+
     "types": ["node"],
+
+    /* ================================
+       Path Aliases
+       ================================ */
+
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     }
   },
+
+  /* ================================
+     Project Scope
+     ================================ */
+
   "include": ["src", "vite.config.ts"]
 }

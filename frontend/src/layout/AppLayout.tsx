@@ -4,28 +4,21 @@
    Global application layout
    ================================== */
 
+import { Outlet } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import { Footer } from "./Footer";
-
-/* ================================
-   Types
-   ================================ */
-
-type AppLayoutProps = {
-  children: React.ReactNode;
-};
 
 /* ================================
    App Layout Component
    ================================ */
 
-export function AppLayout({ children }: AppLayoutProps) {
+export function AppLayout() {
   return (
     <div className="app-layout">
       <Sidebar />
 
       <main className="app-layout__content">
-        {children}
+        <Outlet />
       </main>
 
       <Footer />

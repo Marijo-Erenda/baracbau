@@ -15,7 +15,6 @@
   display: flex;
   align-items: center;
   padding: 4rem;
-  color: #ffffff;
 }
 
 .home__overlay {
@@ -33,13 +32,20 @@
   z-index: 1;
   max-width: 600px;
   text-align: right;
+
+    /* 🔑 Design-System-Farbe */
+  color: var(--overlay-text-primary);
 }
+
 
 /* (optional – aktuell nicht genutzt, aber sauber vorbereitet) */
 .home__content h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
   letter-spacing: 0.12em;
+
+   /* Überschrift etwas stärker */
+  color: var(--overlay-text-hover);
 }
 
 /* Claim / Subtitle */
@@ -50,5 +56,25 @@
   letter-spacing: 0.08em;
 
   margin: 0;
-  opacity: 0.9;
+}
+
+
+/* ================================
+   Hero Navigation Links
+   ================================ */
+
+.home__hero-link {
+  color: var(--overlay-text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.home__hero-link:hover {
+  color: var(--overlay-text-hover);
+}
+
+.home__separator {
+  margin: 0 0.4rem;
+  color: var(--overlay-text-primary);
+  pointer-events: none;
 }

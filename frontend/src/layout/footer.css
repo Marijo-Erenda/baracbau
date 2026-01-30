@@ -1,7 +1,7 @@
 /* ==================================
    BARACBAU – Frontend / Layout
    footer.css
-   Footer (Impressum & Datenschutz)
+   Footer (Overlay / Glass Effect)
    ================================== */
 
 /* ================================
@@ -9,33 +9,44 @@
    ================================ */
 
 .footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  padding: 1rem 2rem;
-  background-color: #000;
-  color: #ccc;
-  font-size: 0.85rem;
+  z-index: 20;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.0)
+  );
 }
+
 
 /* ================================
    Inner Layout
    ================================ */
 
 .footer__inner {
-  max-width: 1280px;
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 0.75rem 2rem;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
+
 /* ================================
-   Copyright
+   Text
    ================================ */
 
 .footer__copyright {
-  white-space: nowrap;
+  color: var(--overlay-text-primary);
+  letter-spacing: 0.08em;
 }
+
 
 /* ================================
    Navigation
@@ -47,14 +58,35 @@
 }
 
 .footer__link {
-  color: #ccc;
+  position: relative;
+  padding: 0.35rem 0.6rem;
+
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--overlay-text-primary);
   text-decoration: none;
-  transition: color 0.2s ease;
+
+  border-radius: 4px;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.25s ease,
+    backdrop-filter 0.25s ease;
 }
 
+/* ================================
+   Hover / Focus Effect
+   ================================ */
+
 .footer__link:hover {
-  color: #fff;
+  color: var(--overlay-text-hover);
+
+  background-color: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
 }
+
 
 /* ================================
    Responsive
@@ -63,6 +95,6 @@
 @media (max-width: 768px) {
   .footer__inner {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
 }
