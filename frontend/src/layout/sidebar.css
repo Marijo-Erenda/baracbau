@@ -90,7 +90,7 @@
 }
 
 .sidebar__link:hover::after {
-  width: calc(100% + 120px);
+  width: calc(100% + 100px);
 }
 
 /* Submenu */

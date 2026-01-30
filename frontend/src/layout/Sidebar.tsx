@@ -13,28 +13,69 @@ import "./sidebar.css";
 
 type MenuItem = {
   label: string;
+  path?: string;
   children?: MenuItem[];
 };
+
 
 /* ================================
    Navigation structure
    ================================ */
 
 const menu: MenuItem[] = [
-  { label: "Home" },
-  { label: "Unternehmen" },
+  {
+    label: "Home",
+    path: "/",
+    children: [
+      { label: "Überblick", path: "/" },
+      { label: "Warum BARACBAU", path: "/#warum" },
+    ],
+  },
+  {
+    label: "Unternehmen",
+    path: "/unternehmen",
+    children: [
+      { label: "Über uns", path: "/unternehmen/ueber-uns" },
+      { label: "Philosophie", path: "/unternehmen/philosophie" },
+      { label: "Qualität & Werte", path: "/unternehmen/qualitaet" },
+    ],
+  },
   {
     label: "Leistungen",
     children: [
-      { label: "Neubau" },
-      { label: "Komplettsanierung" },
-      { label: "Modernisierung" },
+      { label: "Neubau", path: "/leistungen/neubau" },
+      { label: "Komplettsanierung", path: "/leistungen/komplettsanierung" },
+      { label: "Modernisierung", path: "/leistungen/modernisierung" },
     ],
   },
-  { label: "Projekte" },
-  { label: "Karriere" },
-  { label: "Kontakt" },
+  {
+    label: "Projekte",
+    path: "/projekte",
+    children: [
+      { label: "Wohnungsbau", path: "/projekte/wohnungsbau" },
+      { label: "Gewerbebau", path: "/projekte/gewerbebau" },
+      { label: "Referenzen", path: "/projekte/referenzen" },
+    ],
+  },
+  {
+    label: "Karriere",
+    path: "/karriere",
+    children: [
+      { label: "Stellenangebote", path: "/karriere/stellenangebote" },
+      { label: "Ausbildung", path: "/karriere/ausbildung" },
+      { label: "Initiativbewerbung", path: "/karriere/initiativ" },
+    ],
+  },
+  {
+    label: "Kontakt",
+    path: "/kontakt",
+    children: [
+      { label: "Kontaktformular", path: "/kontakt" },
+      { label: "Anfahrt", path: "/kontakt/anfahrt" },
+    ],
+  },
 ];
+
 
 /* ================================
    Sidebar Component
