@@ -19,9 +19,8 @@ export function AppLayout() {
 
       <main className="app-layout__content">
         <Outlet />
+        <Footer />
       </main>
-
-      <Footer />
     </div>
   );
 }

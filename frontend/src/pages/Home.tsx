@@ -7,7 +7,7 @@
 import { Link } from "react-router-dom";
 
 import "./home.css";
-import backgroundHome from "@/assets/images/background_home.jpg";
+import backgroundHome from "@/assets/images/HB_Home.jpg";
 
 /* ================================
    Hero navigation configuration
