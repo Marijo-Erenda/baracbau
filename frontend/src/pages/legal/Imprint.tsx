@@ -1,9 +1,20 @@
+/* ==================================
+   BARACBAU – Frontend / Pages
+   Imprint.tsx
+   Legal page – Imprint
+   ================================== */
+
+import ServiceHeader from "@/components/services/ServiceHeader";
+import HB_Impressum from "@/assets/images/HB_Impressum.jpg";
+
 export default function Imprint() {
   return (
-    <div style={{ padding: "4rem" }}>
-      <h1>Impressum</h1>
-      <p>Angaben gemäß § 5 TMG</p>
-      <p>Coming soon</p>
+    <div className="service-page">
+      <ServiceHeader
+        backgroundImage={HB_Impressum}
+        title="Impressum"
+        subtitle="Angaben gemäß § 5 TMG"
+      />
     </div>
   );
 }
